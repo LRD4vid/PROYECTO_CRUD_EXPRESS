@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.MIPUERTO || process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.send('API Rest Full con express');
+  res.send('API Rest Full con express ES module');
 });
 
 app.listen(PORT, () => {
