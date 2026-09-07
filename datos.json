@@ -1,0 +1,25 @@
+[
+  {
+    "nombre": "Cristian",
+    "edad": "17",
+    "correo": "cristian.a.gomez16@gmail.com",
+    "imagen": "url-1",
+    "clave": "1234"
+  },
+  {
+    "nombre": "Andrea",
+    "edad": "16",
+    "correo": "andreaoblea11@gmail.com",
+    "imagen": "url-3",
+    "clave": "1234"
+  },
+  null,
+  null,
+  {
+    "nombre": "Andres",
+    "edad": "29",
+    "correo": "andresosky@hotmail.com",
+    "imagen": "url-4",
+    "clave": "1234"
+  }
+]
