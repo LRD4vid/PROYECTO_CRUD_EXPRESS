@@ -13,13 +13,18 @@
     "imagen": "url-3",
     "clave": "1234"
   },
-  null,
-  null,
   {
     "nombre": "Andres",
     "edad": "29",
     "correo": "andresosky@hotmail.com",
     "imagen": "url-4",
     "clave": "1234"
+  },
+  {
+    "nombre": "Beto",
+    "edad": "45",
+    "correo": "beticobato@hotmail.com",
+    "clave": "1234",
+    "imagen": "/misImagenes/1788797745074 .png"
   }
 ]
