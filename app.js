@@ -25,14 +25,21 @@ const subir = multer({storage:almacen})
 //importar validaciones
 const { validarAprendiz, validarId } = require("./Validaciones/validaciones")
 
+//importar mis middleware
+const registroMiddleware = require("./middleware/registroMiddleware")
+const manejadorErroresMiddleware = require("./middleware/manejadorErroresMiddleware")
+
 //middelware body-parse
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
+//usar nuestros middelware
+app.use(registroMiddleware)
+
+
 app.get('/', (req, res) => {
   res.send('API Rest Full con Express');
 });
-
 
 app.get('/api/aprendices', (req, res) => {
   sistemaArchivo.readFile(rutaMiArchivo, "utf-8", (error, datos) => {
@@ -45,7 +52,6 @@ app.get('/api/aprendices', (req, res) => {
   })
   // res.status(200).json({/*'Mensaje': 'Lista Aprendices'*/})
 });
-
 
 app.post('/api/aprendices', subir.single("imagen"),(req, res) => {
   const datosAprendiz = req.body
@@ -77,7 +83,6 @@ app.post('/api/aprendices', subir.single("imagen"),(req, res) => {
     })
   })
 })});
-
 
 app.put('/api/aprendices/:id', subir.single("imagen"), (req, res) => {
   const { id } = req.params
@@ -132,7 +137,6 @@ app.put('/api/aprendices/:id', subir.single("imagen"), (req, res) => {
   })
 })
 
-
 app.delete('/api/aprendices/:id', (req, res) => {
   const { id } = req.params
 
@@ -171,7 +175,12 @@ app.delete('/api/aprendices/:id', (req, res) => {
   })
 })
 
+//provocando error
+app.get("/api/error", (req,res,next)=>{
+  next(new Error("Este es un error provocado"))
+})
 
+app.use(manejadorErroresMiddleware)
 
 app.listen(PORT, () => {
   console.log(`Servidor online en el puerto: http://localhost:${PORT}`);

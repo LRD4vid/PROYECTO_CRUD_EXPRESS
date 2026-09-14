@@ -30,5 +30,20 @@
     "correo": "juan.actualizado@email.com",
     "imagen": "/misImagenes/1789352363214 .png",
     "clave": "1234"
+  },
+  {
+    "nombre": "ramon",
+    "edad": "17",
+    "correo": "email@gmail.com",
+    "clave": "1234",
+    "id": 6,
+    "imagen": "Sin imagen"
+  },
+  {
+    "nombre": "Anderson",
+    "edad": "18",
+    "correo": "anderson123@hotmail.com",
+    "imagen": "Sin imagen",
+    "id": 7
   }
 ]
