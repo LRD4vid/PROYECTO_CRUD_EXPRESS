@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "nombre": "Cristian",
     "edad": "17",
     "correo": "cristian.a.gomez16@gmail.com",
@@ -7,6 +8,7 @@
     "clave": "1234"
   },
   {
+    "id": 2,
     "nombre": "Andrea",
     "edad": "16",
     "correo": "andreaoblea11@gmail.com",
@@ -14,6 +16,7 @@
     "clave": "1234"
   },
   {
+    "id": 3,
     "nombre": "Andres",
     "edad": "29",
     "correo": "andresosky@hotmail.com",
@@ -21,10 +24,11 @@
     "clave": "1234"
   },
   {
-    "nombre": "Beto",
-    "edad": "45",
-    "correo": "beticobato@hotmail.com",
-    "clave": "1234",
-    "imagen": "/misImagenes/1788797745074 .png"
+    "id": 5,
+    "nombre": "Juan Pérez Actualizado",
+    "edad": "25",
+    "correo": "juan.actualizado@email.com",
+    "imagen": "/misImagenes/1789352363214 .png",
+    "clave": "1234"
   }
 ]
