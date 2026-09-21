@@ -14,4 +14,4 @@ const autenticacionMiddleware = (req, res, next) => {
         next()
     })
 }
-module.exports = autenticacionMiddlewaregi
+module.exports = autenticacionMiddleware

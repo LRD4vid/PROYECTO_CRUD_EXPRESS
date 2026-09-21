@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const jwtoken = require("jsonwebtoken")
 
 const app = express();
 const PORT = process.env.MIPUERTO || 3003;
@@ -23,11 +24,12 @@ const almacen = multer.diskStorage({
 const subir = multer({storage:almacen})
 
 //importar validaciones
-const { validarAprendiz, validarId } = require("./Validaciones/validaciones")
+const { validarAprendiz, validarId } = require("./src/middleware/Validaciones/validaciones")
 
 //importar mis middleware
-const registroMiddleware = require("./middleware/registroMiddleware")
-const manejadorErroresMiddleware = require("./middleware/manejadorErroresMiddleware")
+const registroMiddleware = require("./src/middleware/registroMiddleware")
+const manejadorErroresMiddleware = require("./src/middleware/manejadorErroresMiddleware")
+const autenticacionMiddleware = require ("./src/middleware/autenticacionMiddleware")
 
 //middelware body-parse
 app.use(express.json())
@@ -180,8 +182,32 @@ app.get("/api/error", (req,res,next)=>{
   next(new Error("Este es un error provocado"))
 })
 
+app.get("/api/rutaprotegida", autenticacionMiddleware, (req, res) => {
+  res.json({mensaje: "Ruta Protegida, acceso con token"})
+})
+
+//endpoint o ruta de inicio de sesion para generar un token
+app.post("/api/login", (req, res) => {
+  //capturar datos del usuario
+  const {usuario, clave} = req.body
+  //simular datos de usuario en la BD
+  const bdUsuario = {"usuario": "Cristian", "clave": "abc123"}
+  //validar datos
+  if (usuario !== bdUsuario.usuario || clave !== bdUsuario.clave)
+  {
+    res.json({mensaje: "Usuario y/o clave incorrecta !!"})
+  }
+  //verificacion y generacion del token
+  const token = jwtoken.sign(
+    {"user": req.usuario},
+    process.env.JWT_SECRETO,
+    {expiresIn:"1h"}
+  )
+  res.json({token})
+})
+
 app.use(manejadorErroresMiddleware)
 
 app.listen(PORT, () => {
   console.log(`Servidor online en el puerto: http://localhost:${PORT}`);
-});
+})
